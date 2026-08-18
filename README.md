@@ -15,6 +15,8 @@
 
 Обязательные колонки: `date`, `amount`. Дополнительные: `order_id`, `returned`.
 
+Для быстрой проверки загрузите [`examples/sales.csv`](examples/sales.csv) в [живое демо](https://ivantolm2004.github.io/reportbot/). Файл намеренно содержит возврат, чтобы проверить исключение суммы из выручки.
+
 ```bash
 npm test
 ```

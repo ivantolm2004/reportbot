@@ -1,0 +1,6 @@
+date,amount,order_id,returned,channel
+2026-08-01,1490,A-100,false,website
+2026-08-01,2490,A-101,false,marketplace
+2026-08-02,790,A-102,true,website
+2026-08-03,3290,A-103,false,referral
+2026-08-04,1890,A-104,false,marketplace
