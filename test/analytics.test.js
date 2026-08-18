@@ -1,0 +1,5 @@
+import test from 'node:test'; import assert from 'node:assert/strict'; import { analyzeSales, parseCsv } from '../src/analytics.js';
+test('parses comma and semicolon CSV',()=>{assert.equal(parseCsv('date,amount\n2026-01-01,"1200"')[0].amount,1200);assert.equal(parseCsv('date;amount\n2026-01-01;99,50')[0].amount,99.5)});
+test('rejects invalid data',()=>{assert.throws(()=>parseCsv('date,total\n2026-01-01,2'),/amount/);assert.throws(()=>parseCsv('date,amount\n2026-01-01,nope'),/Invalid amount/)});
+test('calculates KPIs',()=>{const rows=parseCsv('date,amount,order_id,returned\n2026-01-01,100,A,false\n2026-01-01,50,B,true\n2026-01-02,200,C,false'),result=analyzeSales(rows);assert.equal(result.revenue,300);assert.equal(result.orders,3);assert.equal(result.averageOrder,100);assert.ok(Math.abs(result.returnRate-100/3)<1e-10);assert.deepEqual(result.daily,[{date:'2026-01-01',amount:100},{date:'2026-01-02',amount:200}])});
+test('handles empty data',()=>assert.deepEqual(analyzeSales([]),{revenue:0,orders:0,averageOrder:0,returnRate:0,daily:[]}));

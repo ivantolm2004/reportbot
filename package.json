@@ -1,0 +1,1 @@
+{"name":"reportbot","version":"1.0.0","private":true,"description":"Browser-based CSV sales analytics with a tested calculation engine","type":"module","scripts":{"test":"node --test"},"engines":{"node":">=20"}}
